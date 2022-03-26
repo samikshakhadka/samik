@@ -1,0 +1,35 @@
+#Days-To-Go
+
+# import datetime module
+import datetime, time
+
+# Reading the date of event from user
+event_name= str(input("Enter the name of event   "))
+event_name= event_name.capitalize()
+event_date= int(input("Please enter the year of your event, e.g.2022-2100   "))
+event_month= int(input("Enter the mobth of your event, e.g.1-12   "))
+event_day= int(input("Enter the day of your event, e.g.1-30   "))
+
+""" calculating number of seconds of the date since epoch,obtaining the current 
+time instant and calculating the differences between two dates  """
+
+t= datetime.datetime(event_date, event_month, event_day,0,0)
+t1= time.mktime(t.timetuple())
+t2= time.time()
+diff= t1-t2
+
+#converting time difference(second) into year, day, hour, minutes and seconds
+
+year= int(diff// (365*24*60*60))
+diff= diff%(365*24*60*60)
+day= int(diff//(24*60*60))
+diff= diff%(24*60*60)
+hour= int(diff//(60*60))
+diff= diff%(60*60)
+mins= int(diff//60)
+diff= diff%60
+sec= int(diff)
+
+print(f'\"{event_name} is on {event_day}/{event_month}/{event_date}'
+      f'({year} years, {day} days, {hour} hours,'
+      f'{mins} minutes and {sec} seconds later).\"')
